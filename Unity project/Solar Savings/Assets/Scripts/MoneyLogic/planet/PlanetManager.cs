@@ -5,6 +5,20 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+public enum PlanetCategories
+{
+    None,
+    Housing,
+    Food,
+    Transport,
+    Savings,
+    Insurance,
+    Recreation,
+    Other
+
+}
+
 public class PlanetManager : MonoBehaviour
 {
     public GameObject planet;
@@ -14,6 +28,8 @@ public class PlanetManager : MonoBehaviour
     public GameObject nameField;
     public GameObject descField;
     public GameObject budgetField;
+
+    public PlanetCategories planetCategories;
 
     private bool creationInProgress = false;
 
@@ -39,15 +55,31 @@ public class PlanetManager : MonoBehaviour
 
     public void ConfirmPlanetCreation()
     {
-
-        string planetName = descField.GetComponent<TMP_InputField>().text;
+        PlanetCategories planetIndex = (PlanetCategories)nameField.GetComponent<TMP_Dropdown>().value;
+        string planetName = "";
+        string planetDesc = descField.GetComponent<TMP_InputField>().text;
         string budgetInput = budgetField.GetComponent<TMP_InputField>().text;
         if (int.TryParse(budgetInput, out int result)){
             float num = (float)int.Parse(budgetInput);
             GameObject newPlanet = Instantiate(planet, planetHolder.transform);
 
             //PlanetData newPlanetData = 
-            newPlanet.GetComponent<PlanetData>().InputPlanetData(planetName,planetName,num,num);
+            Debug.Log(planetIndex);
+            switch (planetIndex) {
+
+                case PlanetCategories.None:
+                    break;
+                case PlanetCategories.Housing:
+                    break;
+                case PlanetCategories.Food:
+                    planetName = "Food";
+                    break;
+                case PlanetCategories.Transport: 
+                    break;
+
+            }
+
+            newPlanet.GetComponent<PlanetData>().InputPlanetData(planetName,planetDesc,num,num);
             Debug.Log(newPlanet);
         
         }
