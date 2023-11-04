@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
-from scipy import stats
+import matplotlib.pyplot as plt
 
 
 os.system('cls')
@@ -96,11 +96,11 @@ print(return_dataframe_totext(df))
 print(print_columns_value(df, 'Pulse'))
 print( filter_by_number(df, 'Pulse', 3, 90))
 print("Size of dataframe : " + str(datasize(df)))
-print("Sums : " + sum_of_columns(df, 'Pulse'))
-print("Mean : " + mean_of_columns(df, 'Pulse'))
-print("Median : " + median_of_columns(df, 'Pulse'))
-print("Mode : " + mode_of_columns(df, 'Pulse'))
-print("Info of Data : " + data_info(df))
-print("Correlation : " + data_correlation_columns(df,'Duration','Pulse'))
-print("Standard deviation : " + data_stardard_deviation(df,'Pulse'))
+print("Sums : " + str(sum_of_columns(df, 'Pulse')))
+print("Mean : " + str(mean_of_columns(df, 'Pulse')))
+print("Median : " + str(median_of_columns(df, 'Pulse')))
+print("Mode : " + str(mode_of_columns(df, 'Pulse')))
+print("Info of Data : " + str(data_info(df)))
+print("Correlation : " + str(data_correlation_columns(df,'Duration','Pulse')))
+print("Standard deviation : " + str(data_stardard_deviation(df,'Pulse')))
 
