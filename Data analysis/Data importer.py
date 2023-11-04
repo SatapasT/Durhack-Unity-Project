@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 os.system('cls')
 
 #dataframe = pd.DataFrame(data=data_import)
-df = pd.read_csv('data.csv')
+csvname= os.path.join(os.path.dirname(__file__), "data.csv")
+df = pd.read_csv(csvname)
 
 #print(dataframe.to_string()) 
 #print(dataframe.index)
@@ -102,7 +103,10 @@ def scatter_chart(dataframe,column_name,column_name1,):
     plt.ylabel(column_name1)
     plt.title(f'Scatter Plot of {column_name} vs {column_name1}')
     plt.legend()
+    plt.savefig(os.path.join(os.path.dirname(__file__), "data.png"))
+
     plt.show()
+
 
 
 print(return_dataframe_totext(df))
