@@ -59,20 +59,27 @@ public class PlanetManager : MonoBehaviour
         string planetName = "";
         string planetDesc = descField.GetComponent<TMP_InputField>().text;
         string budgetInput = budgetField.GetComponent<TMP_InputField>().text;
+        float hardcoded_food = 250.0f;
         if (int.TryParse(budgetInput, out int result)){
             float num = (float)int.Parse(budgetInput);
             GameObject newPlanet = Instantiate(planet, planetHolder.transform);
 
             //PlanetData newPlanetData = 
-            Debug.Log(planetIndex);
             switch (planetIndex) {
-
                 case PlanetCategories.None:
                     break;
                 case PlanetCategories.Housing:
                     break;
                 case PlanetCategories.Food:
                     planetName = "Food";
+                    float changeInSpendingHabit = num - hardcoded_food;
+                    float yearlyChangeInHabit = changeInSpendingHabit * 12;
+                    bool lessSpendingThanLastYear = (num < hardcoded_food);
+                    float percentageChange = ((num - hardcoded_food) / hardcoded_food) * 100;
+                    Debug.Log($"Increase in monthly spending on food : £{changeInSpendingHabit}");
+                    Debug.Log($"Increase Yearly spending in food based on this month: £{yearlyChangeInHabit}");
+                    Debug.Log($"You spend less than last year: {lessSpendingThanLastYear}");
+                    Debug.Log($"Percentage Change in Food Budget: {percentageChange}%");
                     break;
                 case PlanetCategories.Transport: 
                     break;
