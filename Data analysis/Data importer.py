@@ -13,7 +13,7 @@ df = pd.read_csv('data.csv')
 #print(dataframe.index)
 #print(dataframe[['Pulse']])
 
-def print_columns(dataframe,column_name):
+def print_columns_value(dataframe,column_name):
     temp_array = []
     for current_data in range(len(dataframe)):
         temp_array.append(dataframe.loc[current_data, column_name])
@@ -66,14 +66,41 @@ def mode_of_columns(dataframe, column_name):
         else:
             temp_array2[temp_array.index(dataframe.loc[current_data, column_name])] += 1
         return temp_array[temp_array2.index(max(temp_array2))]
+    
+def mode_of_columns(dataframe, column_name):
+    temp_array = []
+    temp_array2 = []
+    count = 0
+    for current_data in range(len(dataframe)):
+        if dataframe.loc[current_data, column_name] not in temp_array2:
+            temp_array.append(dataframe.loc[current_data, column_name])
+            temp_array2.append(1)
+        else:
+            temp_array2[temp_array.index(dataframe.loc[current_data, column_name])] += 1
+        return temp_array[temp_array2.index(max(temp_array2))]
+    
+def data_info(dataframe):
+    return dataframe.describe()
+
+def data_info(dataframe):
+    return dataframe.describe()
+
+def data_correlation_columns(dataframe,column_name,column_name2):
+    return dataframe[column_name].corr(dataframe[column_name2])
+
+def data_stardard_deviation(dataframe,column_name):
+    return dataframe[column_name].std()
             
 
-
-print(print_columns(df, 'Pulse'))
-print(filter_by_number(df, 'Pulse', 3, 90))
-print(datasize(df))
 print(return_dataframe_totext(df))
-print(sum_of_columns(df, 'Pulse'))
-print(mean_of_columns(df, 'Pulse'))
-print(median_of_columns(df, 'Pulse'))
-print(mode_of_columns(df, 'Pulse'))
+print(print_columns_value(df, 'Pulse'))
+print( filter_by_number(df, 'Pulse', 3, 90))
+print("Size of dataframe : " + str(datasize(df)))
+print("Sums : " + sum_of_columns(df, 'Pulse'))
+print("Mean : " + mean_of_columns(df, 'Pulse'))
+print("Median : " + median_of_columns(df, 'Pulse'))
+print("Mode : " + mode_of_columns(df, 'Pulse'))
+print("Info of Data : " + data_info(df))
+print("Correlation : " + data_correlation_columns(df,'Duration','Pulse'))
+print("Standard deviation : " + data_stardard_deviation(df,'Pulse'))
+
