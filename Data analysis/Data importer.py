@@ -1,12 +1,9 @@
+import os
 import pandas as pd
 import numpy as np
-import os
-
-
 
 os.system('cls')
 dataframe = pd.read_csv('data.csv')
-
 print(dataframe.to_string()) 
 print(dataframe.index)
 print(dataframe[['Pulse']])
@@ -20,7 +17,7 @@ def locate_item(name,item_target):
         if (dataframe.loc[current_data, name]) == item_target:
             print(dataframe.loc[current_data])
 
-def datasize():
+def datasize(dataframe):
     count = 0
     for current_data in range(len(dataframe)):
         count += 1
@@ -30,4 +27,4 @@ for i in range(10):
     print("-------------------------------------------------------------------")
 locate_item('Pulse','90')
 
-print(datasize())
+print("datasize " + str(datasize(dataframe)))
