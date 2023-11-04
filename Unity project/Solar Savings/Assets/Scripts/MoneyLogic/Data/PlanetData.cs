@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
 
-public class PlanetData
+public class PlanetData : MonoBehaviour
 {
-    public string name;
+    public string planetName;
     public string description;
 
 
@@ -15,7 +15,7 @@ public class PlanetData
 
     public PlanetData(string inputName, string inputDesc, float inputSetBudget, float inputOutgoingAmount)
     {
-        name = inputName;
+        planetName = inputName;
         description = inputDesc;
         setBudget = inputSetBudget;
         outgoingAmount = inputOutgoingAmount;
