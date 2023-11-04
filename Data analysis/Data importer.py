@@ -94,10 +94,8 @@ def scatter_chart(dataframe,column_name,column_name1,):
     print(x,y)
     a, b = np.polyfit(x, y, 1)
     print(a,b)
-    
     plt.scatter(x, y)
     plt.plot(x, a * x + b, color='red', linestyle='-', label='Line of Best Fit')
-    
     plt.xlabel(column_name)
     plt.ylabel(column_name1)
     plt.title(f'Scatter Plot of {column_name} vs {column_name1}')
