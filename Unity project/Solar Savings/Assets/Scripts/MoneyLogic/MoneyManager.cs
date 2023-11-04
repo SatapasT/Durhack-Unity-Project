@@ -34,7 +34,7 @@ public class MoneyManager : MonoBehaviour
 
 
 
-    void AddFunds (int amount)
+    void AddFunds (float amount)
     {
         userData.totalBalance += amount;
         //(int, System.DateTime) newTransaction = (amount, System.DateTime.Now);
@@ -133,13 +133,14 @@ public class MoneyManager : MonoBehaviour
 
             string line;
             string[] splitString;
-            int amount;
+            float amount;
             System.DateTime time;
 
             while ((line = reader.ReadLine()) != null)
             {
                 splitString = line.Split(',');
-                amount = Convert.ToInt32(splitString[0]);
+                int intamount = Convert.ToInt32(splitString[0]);
+                amount = (float)intamount;
                 time = DateTime.ParseExact(splitString[1], "dd/MM/yyyy HH:mm:ss",
                                            System.Globalization.CultureInfo.InvariantCulture);
 
