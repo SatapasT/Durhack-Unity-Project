@@ -3,12 +3,11 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-
 os.system('cls')
 
 #dataframe = pd.DataFrame(data=data_import)
-csvname= os.path.join(os.path.dirname(__file__), "data.csv")
-df = pd.read_csv(csvname)
+csv_name= os.path.join(os.path.dirname(__file__), "data.csv")
+df = pd.read_csv(csv_name)
 
 #print(dataframe.to_string()) 
 #print(dataframe.index)
