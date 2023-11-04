@@ -16,6 +16,9 @@ public class MoneyManager : MonoBehaviour
 
     //need method for adding fixed amounts of money
     void Start() {
+        if (!File.Exists(GetTransactionHistoryPath())) {
+            File.CreateText("userTransactionFile,txt");
+        }
 
  
 
@@ -53,7 +56,10 @@ public class MoneyManager : MonoBehaviour
     void LoadData() {
         userData = new UserData();
         string json = ReadFromFile(file);
-        JsonUtility.FromJsonOverwrite(json, userData);
+        if (json == null) { 
+        }
+        else { JsonUtility.FromJsonOverwrite(json, userData); }
+        
 
         LoadTransactionHistory();
     }
@@ -90,9 +96,10 @@ public class MoneyManager : MonoBehaviour
         else
         {
             Debug.LogWarning("File not found");
+            return null;
         }
 
-        return "Success";
+        
     }
 
     private void SaveTransactionHistory() {
@@ -117,31 +124,35 @@ public class MoneyManager : MonoBehaviour
 
     private void LoadTransactionHistory() {
         string filePath = GetTransactionHistoryPath();
-        
-        StreamReader reader = new StreamReader(filePath);
-
-
-        string line;
-        string[] splitString;
-        int amount;
-        System.DateTime time;
-
-        while ((line = reader.ReadLine()) != null)
+        if (File.Exists(GetTransactionHistoryPath()))
         {
-            splitString = line.Split(',');
-            amount = Convert.ToInt32(splitString[0]);
-            time = DateTime.ParseExact(splitString[1], "dd/MM/yyyy HH:mm:ss",
-                                       System.Globalization.CultureInfo.InvariantCulture);
-
-            Transaction newTransaction = new Transaction(amount,time);
-            userData.transactionHistory.Add(newTransaction);
 
 
+            StreamReader reader = new StreamReader(filePath);
+
+
+            string line;
+            string[] splitString;
+            int amount;
+            System.DateTime time;
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                splitString = line.Split(',');
+                amount = Convert.ToInt32(splitString[0]);
+                time = DateTime.ParseExact(splitString[1], "dd/MM/yyyy HH:mm:ss",
+                                           System.Globalization.CultureInfo.InvariantCulture);
+
+                Transaction newTransaction = new Transaction(amount, time);
+                userData.transactionHistory.Add(newTransaction);
+
+
+            }
+
+
+            reader.Close();
+            File.WriteAllText(filePath, "");
         }
-
-
-        reader.Close();
-        File.WriteAllText(filePath, "");
         //SaveData(userData);
     }
 
