@@ -91,6 +91,14 @@ def data_correlation_columns(dataframe,column_name,column_name2):
 def data_stardard_deviation(dataframe,column_name):
     return dataframe[column_name].std()
             
+def scatter_chart(dataframe,column_name,column_name1,):
+    plt.scatter(dataframe[column_name], dataframe[column_name1])
+    plt.xlabel(column_name) 
+    plt.ylabel(column_name1)  
+    plt.title(f'Scatter Plot of {column_name} vs {column_name1}')  
+    plt.legend([column_name1], title='Scatter Plot')
+    plt.show() 
+
 
 print(return_dataframe_totext(df))
 print(print_columns_value(df, 'Pulse'))
@@ -101,6 +109,7 @@ print("Mean : " + str(mean_of_columns(df, 'Pulse')))
 print("Median : " + str(median_of_columns(df, 'Pulse')))
 print("Mode : " + str(mode_of_columns(df, 'Pulse')))
 print("Info of Data : " + str(data_info(df)))
-print("Correlation : " + str(data_correlation_columns(df,'Duration','Pulse')))
+print("Correlation : " + str(data_correlation_columns(df,'Pulse','Calories')))
 print("Standard deviation : " + str(data_stardard_deviation(df,'Pulse')))
+scatter_chart(df,'Pulse','Calories')
 
