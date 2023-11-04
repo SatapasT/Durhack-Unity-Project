@@ -104,7 +104,6 @@ def scatter_chart(dataframe,column_name,column_name1,):
     plt.title(f'Scatter Plot of {column_name} vs {column_name1}')
     plt.legend()
     plt.savefig(os.path.join(os.path.dirname(__file__), "data.png"))
-
     plt.show()
 
 
