@@ -89,8 +89,9 @@ def data_stardard_deviation(dataframe,column_name):
     return dataframe[column_name].std()
             
 def scatter_chart(dataframe,column_name,column_name1,):
-    x = dataframe[column_name]
-    y = dataframe[column_name1]
+    x = np.array(print_columns_value(dataframe,column_name))
+    y = np.array(print_columns_value(dataframe,column_name1))
+    print(x,y)
     a, b = np.polyfit(x, y, 1)
     print(a,b)
     
