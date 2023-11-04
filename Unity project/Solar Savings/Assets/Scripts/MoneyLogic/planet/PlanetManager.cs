@@ -21,6 +21,8 @@ public enum PlanetCategories
 
 public class PlanetManager : MonoBehaviour
 {
+
+    public List<GameObject> PlanetList = new List<GameObject>();
     public GameObject planet;
     public GameObject planetHolder;
     public GameObject createPlanetMenu;
@@ -72,6 +74,7 @@ public class PlanetManager : MonoBehaviour
                 case PlanetCategories.Housing:
                     break;
                 case PlanetCategories.Food:
+                    planet.GetComponent<PlanetData>().planetCategories = PlanetCategories.Food;
                     planetName = "Food";
                     break;
                 case PlanetCategories.Transport: 
@@ -81,13 +84,18 @@ public class PlanetManager : MonoBehaviour
 
             newPlanet.GetComponent<PlanetData>().InputPlanetData(planetName,planetDesc,num,num);
             Debug.Log(newPlanet);
+
+            CheckForPreviousPlanets(planet.GetComponent<PlanetData>());
         
         }
         //int budgetVal =int.Parse(tempString);
 
 
 
-
+        void CheckForPreviousPlanets(PlanetData planetData) { 
+            
+        
+        }
     }
 
     
