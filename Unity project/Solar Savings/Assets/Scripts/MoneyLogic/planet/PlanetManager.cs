@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlanetManager : MonoBehaviour
 {
     public GameObject planet;
+    public GameObject planetHolder;
     public GameObject createPlanetMenu;
 
     public GameObject nameField;
@@ -43,7 +44,10 @@ public class PlanetManager : MonoBehaviour
         string budgetInput = budgetField.GetComponent<TMP_InputField>().text;
         if (int.TryParse(budgetInput, out int result)){
             float num = (float)int.Parse(budgetInput);
-            PlanetData newPlanet = new PlanetData(planetName,planetName,num,num);
+            GameObject newPlanet = Instantiate(planet, planetHolder.transform);
+
+            //PlanetData newPlanetData = 
+            newPlanet.GetComponent<PlanetData>().InputPlanetData(planetName,planetName,num,num);
             Debug.Log(newPlanet);
         
         }
