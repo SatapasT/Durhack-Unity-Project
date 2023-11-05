@@ -20,7 +20,19 @@ public class gestureController : MonoBehaviour
         achievements
     }
 
+    public float lerpSpeed = 1.0f;
+
     page currPage = page.main;
+    public AnimationCurve lerpAnimCurve;
+    private bool lerpActive = false;
+    private float lerpStartTime;
+    private float lerpCurVal;
+
+    private Vector2 lerpStartPos;
+    private Vector2 lerpTargetPos;
+
+    private GameObject targetObj;
+
 
     Vector2 firstPressPos;
     Vector2 secondPressPos;
@@ -29,12 +41,37 @@ public class gestureController : MonoBehaviour
     private void Update()
     {
         Swipe();
+        if (lerpActive) {
+            lerpCurVal = (Time.time - lerpStartTime) * lerpSpeed;
+            if (lerpCurVal > 1.0f)
+            {
+                lerpCurVal = 1.0f;
+                lerpActive = false;
+            }
+            Vector2 targetPosition = Vector2.Lerp(lerpStartPos, lerpTargetPos,lerpAnimCurve.Evaluate(lerpCurVal));
+            Debug.Log(targetPosition);
+            targetObj.GetComponent<RectTransform>().pivot = targetPosition;
+
+
+
+        }
     }
 
-    private void lerpAnchor(GameObject targetObj, Vector2 targetPos)
+    private void lerpAnchor(GameObject targetObject, Vector2 targetPos)
     {
         //targetObj.GetComponent<RectTransform>().pivot = Vector2.Lerp(targetObj.GetComponent<RectTransform>().pivot, new Vector2(0, 0), totalTime * Time.deltaTime);
-        targetObj.GetComponent<RectTransform>().pivot = targetPos;
+        lerpStartPos = targetObject.GetComponent<RectTransform>().pivot;
+        lerpTargetPos = targetPos;
+
+        Debug.Log(lerpStartPos);
+        Debug.Log(lerpTargetPos);
+        lerpStartTime = Time.time;
+        lerpActive = true;
+        targetObj = targetObject;
+       // Vector2 targetPosition = Vector3.Lerp(startPos, targetPos,le);
+
+
+        //targetObj.GetComponent<RectTransform>().pivot = targetPos;
     }
 
     private void gestureControlUpSweep() //swipe bottom to up
@@ -43,6 +80,8 @@ public class gestureController : MonoBehaviour
         {
             GameObject botPanel = GameObject.Find("bottomPanel");
             lerpAnchor(botPanel, new Vector2(0,0));
+            // Calculate the target position for the camera (interpolate between player position and mouse position)
+
             currPage = page.info1;
         }
     }
