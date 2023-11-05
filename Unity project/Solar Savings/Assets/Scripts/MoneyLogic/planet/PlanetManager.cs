@@ -75,14 +75,10 @@ public class PlanetManager : MonoBehaviour
                 case PlanetCategories.Food:
                     planet.GetComponent<PlanetData>().planetCategories = PlanetCategories.Food;
                     planetName = "Food";
-                    float changeInSpendingHabit = num - hardcoded_food;
-                    float yearlyChangeInHabit = changeInSpendingHabit * 12;
-                    bool lessSpendingThanLastYear = (num < hardcoded_food);
-                    float percentageChange = ((num - hardcoded_food) / hardcoded_food) * 100;
-                    Debug.Log($"Increase in monthly spending on food : £{changeInSpendingHabit}");
-                    Debug.Log($"Increase Yearly spending in food based on this month: £{yearlyChangeInHabit}");
-                    Debug.Log($"You spend less than last year: {lessSpendingThanLastYear}");
-                    Debug.Log($"Percentage Change in Food Budget: {percentageChange}%");
+                    Debug.Log($"Increase in monthly spending on food : £{num - hardcoded_food}");
+                    Debug.Log($"Increase Yearly spending in food based on this month: £{(num - hardcoded_food) * 12}");
+                    Debug.Log($"You spend less than last year: {num < hardcoded_food}");
+                    Debug.Log($"Percentage Change in Food Budget: {((num - hardcoded_food) / hardcoded_food) * 100}%");
                     break;
                 case PlanetCategories.Transport: 
                     break;
