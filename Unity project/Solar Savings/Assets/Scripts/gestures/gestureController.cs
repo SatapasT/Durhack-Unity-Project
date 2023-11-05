@@ -75,7 +75,7 @@ public class gestureController : MonoBehaviour
         {
             case (page.achievements):
                 GameObject achPanel = GameObject.Find("achievementsPanel");
-                lerpAnchor(achPanel, new Vector2(-1, 0));
+                lerpAnchor(achPanel, new Vector2(-1, (float)(-1.5)));
                 currPage = page.main;
                 break;
             case (page.main):
