@@ -382,6 +382,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108364508}
   m_CullTransparentMesh: 1
+--- !u!1 &193289693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3112720269998647654, guid: 55e52a4cd018a4c49a028b3b0754fb75, type: 3}
+  m_PrefabInstance: {fileID: 1347144885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &294411558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3112720269998647654, guid: 55e52a4cd018a4c49a028b3b0754fb75, type: 3}
+  m_PrefabInstance: {fileID: 1613486789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &365649552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1099,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1008dec17417ab746b33761afa2d1c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlanetList:
+  - {fileID: 1572128934}
+  - {fileID: 193289693}
+  - {fileID: 294411558}
+  - {fileID: 1080481235}
   planet: {fileID: 3112720269998647654, guid: 55e52a4cd018a4c49a028b3b0754fb75, type: 3}
   planetHolder: {fileID: 1746651247}
   createPlanetMenu: {fileID: 1915577229}
@@ -1546,6 +1561,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912313681}
   m_CullTransparentMesh: 1
+--- !u!1 &1080481235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3112720269998647654, guid: 55e52a4cd018a4c49a028b3b0754fb75, type: 3}
+  m_PrefabInstance: {fileID: 694554459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1119876902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,6 +2532,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465177130}
   m_CullTransparentMesh: 1
+--- !u!1 &1572128934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3112720269998647654, guid: 55e52a4cd018a4c49a028b3b0754fb75, type: 3}
+  m_PrefabInstance: {fileID: 1773463945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1581882095
 GameObject:
   m_ObjectHideFlags: 0
