@@ -8,6 +8,7 @@ os.system('cls')
 #dataframe = pd.DataFrame(data=data_import)
 csv_name= os.path.join(os.path.dirname(__file__), "data.csv")
 df = pd.read_csv(csv_name)
+print(df)
 
 #print(dataframe.to_string()) 
 #print(dataframe.index)
@@ -103,18 +104,30 @@ def scatter_chart(dataframe,column_name,column_name1,):
     plt.savefig(os.path.join(os.path.dirname(__file__), "data.png"))
     plt.show()
 
+def bar_chart(dataframe,column_name,column_name1,column_name2,column_name3,column_name4,column_name5):
+    print()
+    print(mean_of_columns(dataframe,column_name ))
+    values = [mean_of_columns(dataframe,column_name )/12,mean_of_columns(dataframe,column_name1)/12,mean_of_columns(dataframe,column_name2 )/12,mean_of_columns(dataframe,column_name3 )/12,mean_of_columns(dataframe,column_name4 )/12,
+            mean_of_columns(dataframe,column_name5 )/12]
+    categories = ["Miscellaneous","Personal Care","Insurance","Social Activity","Food","Health"]
+    plt.bar(categories, values)
+    plt.title(f'Your monthly breakdown of your spending!')
+    plt.grid(axis='y')
+    plt.savefig(os.path.join(os.path.dirname(__file__), "data2.png"))
+    plt.show()
 
+bar_chart(df,"A","B", "C","D","E", "F")
+#print(return_dataframe_totext(df))
+#print(print_columns_value(df, 'Pulse'))
+#print( filter_by_number(df, 'Pulse', 3, 90))
+#print("Size of dataframe : " + str(datasize(df)))
+#print("Sums : " + str(sum_of_columns(df, 'Pulse')))
+#print("Mean : " + str(mean_of_columns(df, 'Pulse')))
+#print("Median : " + str(median_of_columns(df, 'Pulse')))
+#print("Mode : " + str(mode_of_columns(df, 'Pulse')))
+#print(str(data_info(df)))
+#print("Correlation : " + str(data_correlation_columns(df,'Pulse','Calories')))
+#print("Standard deviation : " + str(data_stardard_deviation(df,'Pulse')))
+#scatter_chart(df,'Pulse','Calories')
 
-print(return_dataframe_totext(df))
-print(print_columns_value(df, 'Pulse'))
-print( filter_by_number(df, 'Pulse', 3, 90))
-print("Size of dataframe : " + str(datasize(df)))
-print("Sums : " + str(sum_of_columns(df, 'Pulse')))
-print("Mean : " + str(mean_of_columns(df, 'Pulse')))
-print("Median : " + str(median_of_columns(df, 'Pulse')))
-print("Mode : " + str(mode_of_columns(df, 'Pulse')))
-print(str(data_info(df)))
-print("Correlation : " + str(data_correlation_columns(df,'Pulse','Calories')))
-print("Standard deviation : " + str(data_stardard_deviation(df,'Pulse')))
-scatter_chart(df,'Pulse','Calories')
 
