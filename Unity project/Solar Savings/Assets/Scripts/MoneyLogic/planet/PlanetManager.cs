@@ -62,8 +62,8 @@ public class PlanetManager : MonoBehaviour
         string planetDesc = descField.GetComponent<TMP_InputField>().text;
         string budgetInput = budgetField.GetComponent<TMP_InputField>().text;
         float hardcoded_food = 273.34f;
-        if (int.TryParse(budgetInput, out int result)){
-            float num = (float)int.Parse(budgetInput);
+        if (float.TryParse(budgetInput, out float result)){
+            float num = (float)float.Parse(budgetInput);
             GameObject newPlanet = Instantiate(planet, planetHolder.transform);
 
             //PlanetData newPlanetData = 
